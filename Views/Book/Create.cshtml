@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "get",
+            url: 'http://localhost:29864/api/AUTHORs/',
+            data: {},
+            success: function (result) {
+                $.each(result, function (i) {
+                    $('#Author').append($('<option></option>').val(result[i].ID).html(result[i].Name));
+                });
+            }
+        });
+        $.ajax({
+            type: "get",
+            url: 'http://localhost:29864/api/CATEGORies/',
+            data: {},
+            success: function (result) {
+                $.each(result, function (i) {
+                    $('#CategoryID').append($('<option></option>').val(result[i].ID).html(result[i].Name));
+                });
+            }
+        });
+        $.ajax({
+            type: "get",
+            url: 'http://localhost:29864/api/PUBLISHINGs/',
+            data: {},
+            success: function (result) {
+                $.each(result, function (i) {
+                    $('#PublishID').append($('<option></option>').val(result[i].ID).html(result[i].Name));
+                });
+            }
+        });
+    })
+</script>
+}
+
+<div class="form-horizontal">
+    <h4>BOOK</h4>
+    <hr>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Name">Name</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" data-val="true" data-val-length="The field Name must be a string with a maximum length of 50." data-val-length-max="50" id="Name" name="Name" type="text" value="">
+            <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Author">Author</label>
+        <div class="col-md-10">
+            <select class="form-control" id="Author" name="Author"></select>
+            <span class="field-validation-valid text-danger" data-valmsg-for="Author" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="PublishID">PublishID</label>
+        <div class="col-md-10">
+            <select class="form-control" id="PublishID" name="PublishID">
+                
+            </select>
+            <span class="field-validation-valid text-danger" data-valmsg-for="PublishID" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Price">Price</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" data-val="true" data-val-number="The field Price must be a number." id="Price" name="Price" type="text" value="">
+            <span class="field-validation-valid text-danger" data-valmsg-for="Price" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="NumberPage">NumberPage</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" data-val="true" data-val-number="The field NumberPage must be a number." id="NumberPage" name="NumberPage" type="number" value="">
+            <span class="field-validation-valid text-danger" data-valmsg-for="NumberPage" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="CategoryID">CategoryID</label>
+        <div class="col-md-10">
+            <select class="form-control" id="CategoryID" name="CategoryID"></select>
+            <span class="field-validation-valid text-danger" data-valmsg-for="CategoryID" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Note">Note</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" data-val="true" data-val-length="The field Note must be a string with a maximum length of 500." data-val-length-max="500" id="Note" name="Note" type="text" value="">
+            <span class="field-validation-valid text-danger" data-valmsg-for="Note" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button onclick="insert_()" class="btn btn-default">a</button>
+        </div>
+    </div>
+</div>
+
